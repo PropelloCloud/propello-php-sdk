@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace PropelloCloud\Propello\Tests;
 
 use PHPUnit\Framework\TestCase;
 
