@@ -2,6 +2,4 @@
 
 namespace PropelloCloud\Propello;
 
-class PropelloClass
-{
-}
+class PropelloClass {}
