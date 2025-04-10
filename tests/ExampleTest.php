@@ -1,6 +1,6 @@
 <?php
 
-namespace PropelloCloud\Propello\Tests;
+namespace PropelloCloud\Tests;
 
 use PHPUnit\Framework\TestCase;
 
