@@ -80,4 +80,9 @@ class Client
             throw new Exception($exception->getMessage());
         }
     }
+
+    public function getBearerToken(): ?string
+    {
+        return $this->auth->getBearerToken();
+    }
 }

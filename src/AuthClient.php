@@ -41,10 +41,17 @@ class AuthClient extends ClientAbstract
         $this->body = [
             'client_id' => $this->client->clientId,
             'client_secret' => $this->client->clientSecret,
-            'grant_types' => 'client_credentials',
+            'grant_type' => 'client_credentials',
             'scope' => '*',
         ];
 
-        $this->client->post($this);
+        $response = $this->client->post($this);
+        if (! isset($response->access_token)) {
+            throw new Exception('Failed to get bearer token', 500);
+        }
+
+        $this->client->bearerToken = $response->access_token;
+
+        return $this->client->bearerToken;
     }
 }
