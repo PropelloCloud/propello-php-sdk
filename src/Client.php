@@ -17,13 +17,15 @@ class Client
     private const string BASE_URL = 'https://api.yourperx.com/v3/';
 
     private AuthClient $auth;
+
     private HttpClient $http;
+
     public UserClient $user;
 
     public function __construct(
-        public int|null $clientId = null,
-        public string|null $clientSecret = null,
-        public string|null $bearerToken = null,
+        public ?int $clientId = null,
+        public ?string $clientSecret = null,
+        public ?string $bearerToken = null,
     ) {
         $this->http = new HttpClient([
             'base_uri' => self::BASE_URL,
@@ -38,9 +40,9 @@ class Client
     }
 
     public static function configure(
-        int|null $clientId = null,
-        string|null $clientSecret = null,
-        string|null $bearerToken = null,
+        ?int $clientId = null,
+        ?string $clientSecret = null,
+        ?string $bearerToken = null,
     ): self {
         return new self($clientId, $clientSecret, $bearerToken);
     }

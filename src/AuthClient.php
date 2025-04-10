@@ -20,7 +20,7 @@ class AuthClient extends ClientAbstract
         $client->headers = [
             'Accept' => '*/*',
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ' . $token,
+            'Authorization' => 'Bearer '.$token,
         ];
     }
 
@@ -33,7 +33,7 @@ class AuthClient extends ClientAbstract
             return $this->client->bearerToken;
         }
 
-        if (!$this->client->clientId || !$this->client->clientSecret) {
+        if (! $this->client->clientId || ! $this->client->clientSecret) {
             throw new Exception('Missing API credentials', 401);
         }
 

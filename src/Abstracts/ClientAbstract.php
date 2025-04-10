@@ -13,6 +13,7 @@ abstract class ClientAbstract
     public string $url = '';
 
     public array $body = [];
+
     public array $headers = [];
 
     public function __construct(protected Client $client)
