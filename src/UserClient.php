@@ -43,6 +43,20 @@ class UserClient extends ClientAbstract
     /**
      * @throws Throwable
      */
+    public function createBulk(array $users = [], bool $sendEmails = false): stdClass
+    {
+        $this->url = 'user/create/bulk';
+        $this->body = [
+            "send_activation_email" => $sendEmails,
+            "data" => $users,
+        ];
+
+        return $this->call();
+    }
+
+    /**
+     * @throws Throwable
+     */
     public function createWithLogin(array $user = []): stdClass
     {
         $this->url = 'user/create/login-url';

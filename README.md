@@ -60,6 +60,9 @@ $client = new Client(bearerToken: $bearerToken);
 // Creates a user
 $client->user->create(array $user);
 
+// Create multiple users (max 100)
+$client->user->createBulk(array $users, bool $sendEmails)
+
 // Creates a user and returns user one-time login URL
 $client->user->createUserWithLogin(array $user); 
 
