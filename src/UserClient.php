@@ -47,8 +47,8 @@ class UserClient extends ClientAbstract
     {
         $this->url = 'user/create/bulk';
         $this->body = [
-            "send_activation_email" => $sendEmails,
-            "data" => $users,
+            'send_activation_email' => $sendEmails,
+            'data' => $users,
         ];
 
         return $this->call();
