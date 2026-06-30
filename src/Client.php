@@ -22,6 +22,7 @@ class Client
 
     public UserClient $user;
 
+    public GroupClient $group;
     public function __construct(
         public ?int $clientId = null,
         public ?string $clientSecret = null,
@@ -37,6 +38,7 @@ class Client
 
         $this->auth = new AuthClient($this);
         $this->user = new UserClient($this);
+        $this->group = new GroupClient($this);
     }
 
     public static function configure(

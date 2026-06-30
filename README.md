@@ -96,6 +96,22 @@ $client->user->makeKnownByUid(string $uniqueId, array $userDetails);
 $client->user->makeKnownById(int $id, array $userDetails);
 ```
 
+### Groups
+
+```php
+use PropelloCloud\Client;
+$client = new Client(bearerToken: $bearerToken);
+
+// Returns the current organisation group
+$client->group->get();
+
+// If your token has organisation or global access, pass the group ID explicitly
+$client->group->get(int $organisationGroupId);
+
+// Returns all organisation groups (requires organisation-level access)
+$client->group->list();
+```
+
 ## Credits
 
 - [Richard Porter](https://github.com/rpwebdevelopment)
