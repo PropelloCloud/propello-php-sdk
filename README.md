@@ -112,6 +112,23 @@ $client->group->get(int $organisationGroupId);
 $client->group->list();
 ```
 
+### Offers
+
+```php
+use PropelloCloud\Client;
+$client = new Client(bearerToken: $bearerToken);
+
+// Returns a list of offers
+$client->offers->list();
+
+// If your token has organisation or global access, pass the group ID explicitly
+$client->offers->list(int $organisationGroupId);
+
+// Returns a single offer by ID
+$client->offers->get(int $id);
+$client->offers->get(int $id, int $organisationGroupId);
+```
+
 ## Credits
 
 - [Richard Porter](https://github.com/rpwebdevelopment)
