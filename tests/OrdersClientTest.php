@@ -94,5 +94,4 @@ class OrdersClientTest extends TestCase
         $this->assertEquals('POST', $request->getMethod());
         $this->assertEquals('/v3/orders/id/42', $request->getUri()->getPath());
     }
-
 }

@@ -20,7 +20,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function setUp(): void
     {
-        $this->mock = new MockHandler();
+        $this->mock = new MockHandler;
         $handlerStack = HandlerStack::create($this->mock);
         $httpClient = new HttpClient([
             'handler' => $handlerStack,
