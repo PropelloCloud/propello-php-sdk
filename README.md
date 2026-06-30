@@ -112,6 +112,22 @@ $client->group->get(int $organisationGroupId);
 $client->group->list();
 ```
 
+### Orders
+
+```php
+use PropelloCloud\Client;
+$client = new Client(bearerToken: $bearerToken);
+
+// Returns a paginated list of all orders for the group
+$client->orders->listGroupOrders(array $filters);
+// Available filters: per_page, page, order_created_from, order_created_to, order_status, brand_id, brand_name, organisation_group_id
+
+// Returns orders for a specific user
+$client->orders->listUserOrdersByEmail(string $email, array $filters);
+$client->orders->listUserOrdersByUid(string $uniqueId, array $filters);
+$client->orders->listUserOrdersById(int $id, array $filters);
+```
+
 ### Offers
 
 ```php
