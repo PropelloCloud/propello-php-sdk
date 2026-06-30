@@ -94,6 +94,14 @@ $client->user->anonymiseById(int $id);
 // Restore anonymised user account with details
 $client->user->makeKnownByUid(string $uniqueId, array $userDetails);
 $client->user->makeKnownById(int $id, array $userDetails);
+
+// Returns a paginated list of users
+$client->user->list(array $filters);
+
+// Returns redemption stats for a user
+$client->user->getRedemptionStatsByEmail(string $email);
+$client->user->getRedemptionStatsByUid(string $uniqueId);
+$client->user->getRedemptionStatsById(int $id);
 ```
 
 ### Groups
@@ -143,6 +151,23 @@ $client->offers->list(int $organisationGroupId);
 // Returns a single offer by ID
 $client->offers->get(int $id);
 $client->offers->get(int $id, int $organisationGroupId);
+```
+
+### Interactions
+
+```php
+use PropelloCloud\Client;
+$client = new Client(bearerToken: $bearerToken);
+
+// Returns a list of interactions for a specific user
+$client->interactions->listByEmail(string $email, array $filters);
+$client->interactions->listByUid(string $uniqueId, array $filters);
+$client->interactions->listById(int $id, array $filters);
+
+// Stores an interaction for a specific user
+$client->interactions->storeByEmail(string $email, array $interaction);
+$client->interactions->storeByUid(string $uniqueId, array $interaction);
+$client->interactions->storeById(int $id, array $interaction);
 ```
 
 ## Credits

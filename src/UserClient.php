@@ -24,7 +24,7 @@ class UserClient extends ClientAbstract
         return $this->call();
     }
 
-    private function setUserUrl(string $prefix, string $identifier = 'email', string $value = ''): void
+    private function setUserUrl(string $prefix, string $identifier = 'email', string|int $value = ''): void
     {
         $this->url = "user/{$prefix}/{$identifier}/{$value}";
     }
@@ -199,5 +199,51 @@ class UserClient extends ClientAbstract
     public function makeKnownById(int|string $id = '', array $user = []): stdClass
     {
         return $this->makeKnown('id', $id, $user);
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function list(array $filters = []): stdClass
+    {
+        $this->url = 'user/list';
+        $this->body = $filters;
+
+        return $this->call();
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function getRedemptionStatsByEmail(string $email): stdClass
+    {
+        return $this->getRedemptionStats('email', $email);
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function getRedemptionStatsByUid(string $uid): stdClass
+    {
+        return $this->getRedemptionStats('UID', $uid);
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function getRedemptionStatsById(int|string $id): stdClass
+    {
+        return $this->getRedemptionStats('id', $id);
+    }
+
+    /**
+     * @throws Throwable
+     */
+    private function getRedemptionStats(string $identifier, string|int $value): stdClass
+    {
+        $this->url = "user/stats/{$identifier}/{$value}";
+        $this->body = [];
+
+        return $this->call();
     }
 }
