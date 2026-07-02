@@ -94,6 +94,80 @@ $client->user->anonymiseById(int $id);
 // Restore anonymised user account with details
 $client->user->makeKnownByUid(string $uniqueId, array $userDetails);
 $client->user->makeKnownById(int $id, array $userDetails);
+
+// Returns a paginated list of users
+$client->user->list(array $filters);
+
+// Returns redemption stats for a user
+$client->user->getRedemptionStatsByEmail(string $email);
+$client->user->getRedemptionStatsByUid(string $uniqueId);
+$client->user->getRedemptionStatsById(int $id);
+```
+
+### Groups
+
+```php
+use PropelloCloud\Client;
+$client = new Client(bearerToken: $bearerToken);
+
+// Returns the current organisation group
+$client->group->get();
+
+// If your token has organisation or global access, pass the group ID explicitly
+$client->group->get(int $organisationGroupId);
+
+// Returns all organisation groups (requires organisation-level access)
+$client->group->list();
+```
+
+### Orders
+
+```php
+use PropelloCloud\Client;
+$client = new Client(bearerToken: $bearerToken);
+
+// Returns a paginated list of all orders for the group
+$client->orders->listGroupOrders(array $filters);
+// Available filters: per_page, page, order_created_from, order_created_to, order_status, brand_id, brand_name, organisation_group_id
+
+// Returns orders for a specific user
+$client->orders->listUserOrdersByEmail(string $email, array $filters);
+$client->orders->listUserOrdersByUid(string $uniqueId, array $filters);
+$client->orders->listUserOrdersById(int $id, array $filters);
+```
+
+### Offers
+
+```php
+use PropelloCloud\Client;
+$client = new Client(bearerToken: $bearerToken);
+
+// Returns a list of offers
+$client->offers->list();
+
+// If your token has organisation or global access, pass the group ID explicitly
+$client->offers->list(int $organisationGroupId);
+
+// Returns a single offer by ID
+$client->offers->get(int $id);
+$client->offers->get(int $id, int $organisationGroupId);
+```
+
+### Interactions
+
+```php
+use PropelloCloud\Client;
+$client = new Client(bearerToken: $bearerToken);
+
+// Returns a list of interactions for a specific user
+$client->interactions->listByEmail(string $email, array $filters);
+$client->interactions->listByUid(string $uniqueId, array $filters);
+$client->interactions->listById(int $id, array $filters);
+
+// Stores an interaction for a specific user
+$client->interactions->storeByEmail(string $email, array $interaction);
+$client->interactions->storeByUid(string $uniqueId, array $interaction);
+$client->interactions->storeById(int $id, array $interaction);
 ```
 
 ## Credits

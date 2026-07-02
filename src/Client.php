@@ -22,6 +22,14 @@ class Client
 
     public UserClient $user;
 
+    public GroupClient $group;
+
+    public OrdersClient $orders;
+
+    public OffersClient $offers;
+
+    public InteractionsClient $interactions;
+
     public function __construct(
         public ?int $clientId = null,
         public ?string $clientSecret = null,
@@ -37,6 +45,10 @@ class Client
 
         $this->auth = new AuthClient($this);
         $this->user = new UserClient($this);
+        $this->group = new GroupClient($this);
+        $this->orders = new OrdersClient($this);
+        $this->offers = new OffersClient($this);
+        $this->interactions = new InteractionsClient($this);
     }
 
     public static function configure(
